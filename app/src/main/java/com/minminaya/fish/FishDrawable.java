@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -24,7 +25,7 @@ public class FishDrawable extends Drawable {
     /**
      * 头部半径
      */
-    private static final float HEAD_RADIUS = 40f;
+    private static final float HEAD_RADIUS = 30f;
     /**
      * 第一节身体长度
      */
@@ -99,9 +100,19 @@ public class FishDrawable extends Drawable {
      * 主画笔
      */
     private Paint mPaint;
+    private Context mContext;
 
-    public FishDrawable() {
+    public FishDrawable(Context context) {
         init();
+        this.mContext = context;
+    }
+
+    public PointF getHeadPoint() {
+        return headPoint;
+    }
+
+    public PointF getMiddlePoint() {
+        return middlePoint;
     }
 
     /**
@@ -296,7 +307,9 @@ public class FishDrawable extends Drawable {
         pointF3 = calculatPoint(bottomPointF, segmentTopRadius * ratio, angle + 90);//右下
 
 
-        makeTail(canvas, topPointF2, segmentLength, segmentTopRadius, angle);
+//        makeTail(canvas, topPointF2, segmentLength, segmentTopRadius, angle);
+        //为了扭得更骚，加了50宽度
+        makeTail(canvas, topPointF2, segmentLength, segmentTopRadius + 50, angle);
         //画上下俩个圆
         canvas.drawCircle(bottomPointF.x, bottomPointF.y, segmentTopRadius * ratio, mPaint);
 
@@ -411,6 +424,22 @@ public class FishDrawable extends Drawable {
     public int getOpacity() {
         //半透明,只有绘制的地方才盖住下边
         return PixelFormat.TRANSLUCENT;
+    }
+
+    public void setMainAngle(float mainAngle) {
+        this.mainAngle = mainAngle;
+    }
+
+    public float getHeadRadius() {
+        return HEAD_RADIUS;
+    }
+
+    public void setWaveFrequence(float waveFrequence) {
+        this.waveFrequence = waveFrequence;
+    }
+
+    public ObjectAnimator getFinsAnimator() {
+        return finsAnimator;
     }
 
     @Override
