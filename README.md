@@ -1,7 +1,15 @@
 # Fish
 
-简书博主Jics的自定义Drawable实现灵动的红鲤鱼动画（上下篇）个人练习代码
-自己加了很多注释，还有思路
+来自[Fish_2](https://github.com/Jichensheng/Fish_2)的自定义Drawable实现灵动的红鲤鱼动画
+
+
+----
+
+模仿学习了一下，自己加了很多注释，还有思路，当然大体思路分析可以去看看jics的博客解析
+
+![](1.gif)
+
+---
 
 jics博主的简书：[自定义Drawable实现灵动的红鲤鱼动画（上篇）](http://www.jianshu.com/p/3dd3d1524851)
 
